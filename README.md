@@ -1,1 +1,1 @@
-# telomere-finder
+# Tandem Repeats Merger
