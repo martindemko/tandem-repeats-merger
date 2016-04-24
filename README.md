@@ -31,6 +31,5 @@ Set also the readLength. This assumes your reads were cut to same length.
    sh runAllTRF.sh
 
 7. Check out your candidate telomeric sequences in tandem-repeats-merger/parsedNonPerfect_SHORTNAME_Nrepeats/res/joined_fixed_pairedReverseComplement_allowedZeros_ZZZ_allowedBal_BBB.txt
-
 These are the sequences, which (1) have zero occurrences in data without BAL-31 in ZZZ or less species, and (2) have more occurrences in data with BAL-31 than without BAL-31 in BBB or less species. 
 
