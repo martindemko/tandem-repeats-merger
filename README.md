@@ -13,7 +13,7 @@ HOW TO RUN:
 2. Download Tandem Repeats Finder from https://tandem.bu.edu/trf/ and place it into this folder. If your binary is not named trf407b.linux64 or you want to use different path than $PWD, modify iterateTRF.sh. TRF parameters (”2 7 7 80 10 50 15”) can also be changed here. 
 If you only want to do the post-processing, comment out iterateTRF.sh script in runAllTRF.sh
 
-3.In runAllTRF.sh, set:
+3. In runAllTRF.sh, set:
   data_dir=“/my/data"  # name of folder with your data
   short_name=“some_identifier”  # identifier for output folder names
   minNumberOfRepeats="3" # minimum number of repeats to consider
