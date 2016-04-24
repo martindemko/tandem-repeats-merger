@@ -14,10 +14,10 @@ HOW TO RUN:
 If you only want to do the post-processing, comment out iterateTRF.sh script in runAllTRF.sh
 
 3. In runAllTRF.sh, set:
-  data_dir=“/my/data"  # name of folder with your data
-  short_name=“some_identifier”  # identifier for output folder names
-  minNumberOfRepeats="3" # minimum number of repeats to consider
-  minLengthOfPattern=“2”  # minimum length of pattern to consider
+  * data_dir=“/my/data"  # name of folder with your data
+  * short_name=“some_identifier”  # identifier for output folder names
+  * minNumberOfRepeats="3" # minimum number of repeats to consider
+  * minLengthOfPattern=“2”  # minimum length of pattern to consider
 
 4. In join.sh, set "names” to exact names of your fasta files (without “.fasta” extension).
 If you want to measure BAL31 sensitivity, you need to set “names” in order A_genom, A_bal, B_genom, B_bal, …
@@ -27,8 +27,8 @@ In restrZeros.py, set numberOfReads to correspond to your dataset (same order as
 Set also the readLength. This assumes your reads were cut to same length.
 
 6. Run! (This will take a while.)
-   cd tandem-repeats-merger
-   sh runAllTRF.sh
+   * cd tandem-repeats-merger
+   * sh runAllTRF.sh
 
 7. Check out your candidate telomeric sequences in tandem-repeats-merger/parsedNonPerfect_SHORTNAME_Nrepeats/res/joined_fixed_pairedReverseComplement_allowedZeros_ZZZ_allowedBal_BBB.txt
 These are the sequences, which (1) have zero occurrences in data without BAL-31 in ZZZ or less species, and (2) have more occurrences in data with BAL-31 than without BAL-31 in BBB or less species. 
