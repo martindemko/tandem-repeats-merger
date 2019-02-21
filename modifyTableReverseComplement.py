@@ -1,4 +1,4 @@
-# Copyright (C) 2019 by Zdenka Sedenka <zdenka@sedenka.cz>
+# Copyright (C) 2016 by Zdenka Sedenka <zdenka@sedenka.cz>
 
 import os 
 import argparse
