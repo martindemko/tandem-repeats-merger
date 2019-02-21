@@ -14,15 +14,15 @@ HOW TO RUN:
 If you only want to do the post-processing, comment out iterateTRF.sh script in runAllTRF.sh
 
 3. In runAllTRF.sh, set:
-  * data_dir=“/my/data"  # name of folder with your data
-  * short_name=“some_identifier”  # identifier for output folder names
+  * dataDir=“/my/data"  # name of folder with your data
+  * shortName=“some_identifier”  # identifier for output folder names
   * minNumberOfRepeats="3" # minimum number of repeats to consider
   * minLengthOfPattern=“2”  # minimum length of pattern to consider
 
 4. In join.sh, set "names” to exact names of your fasta files (without “.fasta” extension).
 If you want to measure BAL31 sensitivity, you need to set “names” in order A_genom, A_bal, B_genom, B_bal, …
 
-5. If you want to count relative occurrences, got to runAllTRF.sh and set -r 1 for python restrZeros.pyrestrZeros.py.
+5. If you want to count relative occurrences, got to runAllTRF.sh and set -r 1 for python restrZeros.py.
 In restrZeros.py, set numberOfReads to correspond to your dataset (same order as in previous step in “names”). 
 Set also the readLength. This assumes your reads were cut to same length.
 
