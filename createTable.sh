@@ -1,3 +1,4 @@
+# Copyright (C) 2016 by Zdenka Sedenka <zdenka@sedenka.cz>
 TEMPFILE=/tmp/$$.tmp
 echo "" > $TEMPFILE
 cd $1
