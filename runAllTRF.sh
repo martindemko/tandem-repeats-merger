@@ -9,8 +9,8 @@ mkdir $myDir
 echo "trf"
 sh iterateTRF.sh $myDir"/"$dataDir $myDir"/res_taref_"$shortName
 
-echo "iterate_all_files"
-python iterate_all_files.py -i $myDir"/res_taref_"$shortName -r $myDir"/parsedNonPerfect_"$shortName"_min"$minNumberOfRepeats"repeats_min"$minLengthOfPattern"pattern" -n $minNumberOfRepeats -p $minLengthOfPattern
+echo "iterateAllFiles"
+python iterateAllFiles.py -i $myDir"/res_taref_"$shortName -r $myDir"/parsedNonPerfect_"$shortName"_min"$minNumberOfRepeats"repeats_min"$minLengthOfPattern"pattern" -n $minNumberOfRepeats -p $minLengthOfPattern
 
 echo "createTable"
 sh createTable.sh $myDir"/parsedNonPerfect_"$shortName"_min"$minNumberOfRepeats"repeats_min"$minLengthOfPattern"pattern"
