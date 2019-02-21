@@ -1,5 +1,6 @@
 #!/bin/bash
-#joins files in folder $1 together, in order defined in names. The files were previously sorted by createTable.sh
+# Copyright (C) 2016 by Zdenka Sedenka <zdenka@sedenka.cz>
+# Joins files in folder $1 together, in order defined in names. The files were previously sorted by createTable.sh
 cd $1
 names=( A_Anglosum A_Anglosum_B A_Cepa A_Cepa_B )
 echo ${names[0]}
