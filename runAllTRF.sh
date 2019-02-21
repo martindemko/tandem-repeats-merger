@@ -24,11 +24,8 @@ python removePermutations.py -f $myDir"/parsedNonPerfect_"$shortName"_min"$minNu
 
 echo "group reverse complements"
 python modifyTableReverseComplement.py -f $myDir"/parsedNonPerfect_"$shortName"_min"$minNumberOfRepeats"repeats_min"$minLengthOfPattern"pattern/res/joined_fixed.txt"
-
-echo "sort"
-cd $myDir"/parsedNonPerfect_"$shortName"_min"$minNumberOfRepeats"repeats_min"$minLengthOfPattern"pattern/res" 
-
-#echo "restrZeros"
+ 
+echo "restrZeros"
 python restrZeros.py -f $myDir"/parsedNonPerfect_"$shortName"_min"$minNumberOfRepeats"repeats_min"$minLengthOfPattern"pattern/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 1 -z 1 -r 0
 python restrZeros.py -f $myDir"/parsedNonPerfect_"$shortName"_min"$minNumberOfRepeats"repeats_min"$minLengthOfPattern"pattern/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 2 -z 2 -r 0
 python restrZeros.py -f $myDir"/parsedNonPerfect_"$shortName"_min"$minNumberOfRepeats"repeats_min"$minLengthOfPattern"pattern/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 3 -z 3 -r 0
