@@ -1,3 +1,5 @@
+# Copyright (C) 2019 by Zdenka Sedenka <zdenka@sedenka.cz>
+
 import argparse
 import sys
 import os
