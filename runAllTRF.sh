@@ -1,3 +1,4 @@
+# Copyright (C) 2016 by Zdenka Sedenka <zdenka@sedenka.cz>
 shortName="some_identiver"  # short identifier for your results, e.g. "15_cutAd_wd"
 minNumberOfRepeats="3" # min number of repeats
 minLengthOfPattern="4" # min length of pattern
