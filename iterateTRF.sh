@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (C) 2016 by Zdenka Sedenka <zdenka@sedenka.cz>
 IN_SUFFIX=".fasta"
 echo 'set data dir'
 DATADIR=$1 
