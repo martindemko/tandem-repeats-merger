@@ -1,5 +1,3 @@
-# Copyright (C) 2016 by Zdenka Sedenka <zdenka@sedenka.cz>
-
 import argparse
 import sys
 import os

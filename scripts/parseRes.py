@@ -1,5 +1,3 @@
-# Copyright (C) 2016 by Zdenka Sedenka <zdenka@sedenka.cz>
-
 import os.path
 from itertools import groupby
 import argparse

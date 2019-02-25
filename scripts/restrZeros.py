@@ -1,5 +1,3 @@
-# Copyright (C) 2016 by Zdenka Sedenka <zdenka@sedenka.cz>
-
 import argparse
 import sys
 import os
@@ -30,7 +28,7 @@ if __name__ == "__main__":
     infix = innameSplit[0]
     suffix = innameSplit[1]
 
-    numberOfReads = [14970820,10885988,15797160,15814626,9470406,56974950,11623050,10304624,10196784,11609754,11381892,7158556,8604606,9145284,7742944,12816646,10614178,13694252,33587370,32821404,6656904,14209658]
+    numberOfReads = [1800000,1800000,1800000]
     readLength = 90
 
     resultsName  = infix + '_allowedZeros_' + str(allowedZeros) + '_allowedBal_' + str(allowedBal) + '_rel' + str(relativize) + '.txt' 
