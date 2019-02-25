@@ -1,12 +1,14 @@
 # Tandem Repeats Merger
 
-Scripts for modifying output of Tandem Repeats Finder (TRF). 
+Set of scripts for modifying output of Tandem Repeats Finder (TRF). 
 
 Finds candidate telomeric sequences in NGS data output of TRF. 
 
 Tested on Ubuntu 16.04 with Python 2.7. 
 
 Either you can run TRM along with TRF starting with the .fasta files, or if you already have NGS output data from TRF, you can run the TRM only.
+
+This version is primarly used for Galaxy's toolshed repository definition. But can be used on command-line as well, just follow the README.
 
 ## How to run together with TRF
 
