@@ -49,7 +49,7 @@ All the input parameters are contained together in the `runAllWithTRF.sh` script
 
 * res                                                                              ... predifined output directory name (can be changed in the variable `myDir` in the scripts `runAllWithRTF.sh` and `runAllNoTRF.sh`)
 * ├── parsed
-* │   ├── dataset\_6484\_ppr.txt                                                   ... intermediate file
+* │   ├── dataset\_6484\_ppr.txt                                                   ... intermediate file
 * │   ├── dataset\_6485\_ppr.txt                                                   ... intermediate file
 * │   ├── dataset\_6486\_ppr.txt                                                   ... intermediate file
 * │   └── res
