@@ -47,28 +47,28 @@ All the input parameters are contained together in the `runAllWithTRF.sh` script
 ## Explain specific output folder structure
 
 
-res                                                                              ... predifined output directory name (can be changed in the variable `myDir` in the scripts `runAllWithRTF.sh` and `runAllNoTRF.sh`)
-├── parsed
-│   ├── dataset\_6484\_ppr.txt                                                   ... intermediate file
-│   ├── dataset\_6485\_ppr.txt                                                   ... intermediate file
-│   ├── dataset\_6486\_ppr.txt                                                   ... intermediate file
-│   └── res
-│       ├── dataset\_6484\_ppr\_sorted.txt                                       ... intermediate file
-│       ├── dataset\_6485\_ppr\_sorted.txt                                       ... intermediate file
-│       ├── dataset\_6486\_ppr\_sorted.txt                                       ... intermediate file
-│       ├── joined\_fixed\_pairedReverseComplement\_merged\_sorted\_FINAL.txt    ... FINAL output file
-│       ├── joined\_fixed\_pairedReverseComplement\_merged\_sorted.txt           ... intermediate file
-│       ├── joined\_fixed\_pairedReverseComplement\_merged.txt                   ... intermediate file
-│       ├── joined\_fixed\_pairedReverseComplement.txt                           ... intermediate file
-│       ├── joined\_fixed.txt                                                    ... intermediate file
-│       ├── joined\_fixed\_without\_pairedReverseComplement\_sorted_FINAL.txt    ... FINAL output file
-│       ├── joined\_fixed\_without\_pairedReverseComplement\_sorted.txt          ... intermediate file
-│       ├── joined\_fixed\_without\_pairedReverseComplement.txt                  ... intermediate file
-│       └── joined.txt                                                           ... intermediate file
-└── TRF\_res                                                                     ... directory containing all TRF outputs (either it is filled automatically (case of `runAllWithTRF.sh`), or you must copy your input here (case of `runAllNoTRF.sh`)
-    ├── dataset\_6484.dat                                                        ... NGS data from TRF
-    ├── dataset\_6485.dat                                                        ... NGS data from TRF
-    └── dataset\_6486.dat                                                        ... NGS data from TRF
+* res                                                                              ... predifined output directory name (can be changed in the variable `myDir` in the scripts `runAllWithRTF.sh` and `runAllNoTRF.sh`)
+* ├── parsed
+* │   ├── dataset\_6484\_ppr.txt                                                   ... intermediate file
+* │   ├── dataset\_6485\_ppr.txt                                                   ... intermediate file
+* │   ├── dataset\_6486\_ppr.txt                                                   ... intermediate file
+* │   └── res
+* │       ├── dataset\_6484\_ppr\_sorted.txt                                       ... intermediate file
+* │       ├── dataset\_6485\_ppr\_sorted.txt                                       ... intermediate file
+* │       ├── dataset\_6486\_ppr\_sorted.txt                                       ... intermediate file
+* │       ├── joined\_fixed\_pairedReverseComplement\_merged\_sorted\_FINAL.txt    ... FINAL output file
+* │       ├── joined\_fixed\_pairedReverseComplement\_merged\_sorted.txt           ... intermediate file
+* │       ├── joined\_fixed\_pairedReverseComplement\_merged.txt                   ... intermediate file
+* │       ├── joined\_fixed\_pairedReverseComplement.txt                           ... intermediate file
+* │       ├── joined\_fixed.txt                                                    ... intermediate file
+* │       ├── joined\_fixed\_without\_pairedReverseComplement\_sorted_FINAL.txt    ... FINAL output file
+* │       ├── joined\_fixed\_without\_pairedReverseComplement\_sorted.txt          ... intermediate file
+* │       ├── joined\_fixed\_without\_pairedReverseComplement.txt                  ... intermediate file
+* │       └── joined.txt                                                           ... intermediate file
+* └── TRF\_res                                                                     ... directory containing all TRF outputs (either it is filled automatically (case of `runAllWithTRF.sh`), or you must copy your input here (case of `runAllNoTRF.sh`)
+*     ├── dataset\_6484.dat                                                        ... NGS data from TRF
+*     ├── dataset\_6485.dat                                                        ... NGS data from TRF
+*     └── dataset\_6486.dat                                                        ... NGS data from TRF
 
 
 
