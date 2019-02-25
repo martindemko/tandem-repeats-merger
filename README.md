@@ -12,7 +12,7 @@ Either you can run TRM along with TRF starting with the .fasta files, or if you 
 
 1. Place your data in .fasta format into one folder (e.g. ./data/)
 
-2. Download Tandem Repeats Finder from https://tandem.bu.edu/trf/ and place it into this folder. If your binary is not named trf407b.linux64 or you want to use different path than $PWD, modify iterateTRF.sh. 
+2. Download Tandem Repeats Finder from https://tandem.bu.edu/trf/ and place it into this folder. If your binary is not named `trf407b.linux64` or you want to use different path than `$PWD`, modify `iterateTRF.sh`. 
 
 Better solution is to use conda with the env.yaml configuration file. Just call `conda create env -f ./env.yaml -n trm-env` and after the installation process call `source activate trm-env`.
 
@@ -30,45 +30,45 @@ Better solution is to use conda with the env.yaml configuration file. Just call 
 
 All the input parameters are contained together in the `runAllWithTRF.sh` script so we use here the explanation from there (so far, they must be used in the specified order and in the right place):
 
-* minNumberOfRepeats="3"   # min number of repeats
-* minLengthOfPattern="4"   # min length of repeating pattern
-* trf_match="2"            # TRF's matching weight
-* trf_mism="7"             # TRF's mismatching penalty
-* trf_delta="7"            # TRF's indel penalty
-* trf_pm="80"              # TRF's match probability (whole number)
-* trf_pi="10"              # TRF's indel probability (whole number)
-* trf_min="50"             # TRF's minimum alignment score to report
-* trf_max="15"             # TRF's maximum period size to report
-* trf_longest="2"          # TRF's maximum TR length expected (in millions)
-* readLength="90"          # for restrZeros.py
-* relOccur="0"             # if yes, the value must be 1 otherwise it is preset to 0
-* trf_html=""              # TRF's html output; if you want to supress it change the value to '-h'
+* __minNumberOfRepeats="3"__   ... min number of repeats
+* __minLengthOfPattern="4"__   ... min length of repeating pattern
+* __trf_match="2"__            ... TRF's matching weight
+* __trf_mism="7"__             ... TRF's mismatching penalty
+* __trf_delta="7"__            ... TRF's indel penalty
+* __trf_pm="80"__              ... TRF's match probability (whole number)
+* __trf_pi="10"__              ... TRF's indel probability (whole number)
+* __trf_min="50"__             ... TRF's minimum alignment score to report
+* __trf_max="15"__             ... TRF's maximum period size to report
+* __trf_longest="2"__          ... TRF's maximum TR length expected (in millions)
+* __readLength="90"__          ... for restrZeros.py
+* __relOccur="0"__             ... if yes, the value must be 1 otherwise it is preset to 0
+* __trf_html=""__              ... TRF's html output; if you want to supress it change the value to '-h'
 
 ## Explain specific output folder structure
 
 
-* res                                                                              ... predifined output directory name (can be changed in the variable `myDir` in the scripts `runAllWithRTF.sh` and `runAllNoTRF.sh`)
-* ├── parsed
-* │   ├── dataset\_6484\_ppr.txt                                                   ... intermediate file
-* │   ├── dataset\_6485\_ppr.txt                                                   ... intermediate file
-* │   ├── dataset\_6486\_ppr.txt                                                   ... intermediate file
-* │   └── res
-* │       ├── dataset\_6484\_ppr\_sorted.txt                                       ... intermediate file
-* │       ├── dataset\_6485\_ppr\_sorted.txt                                       ... intermediate file
-* │       ├── dataset\_6486\_ppr\_sorted.txt                                       ... intermediate file
-* │       ├── joined\_fixed\_pairedReverseComplement\_merged\_sorted\_FINAL.txt    ... FINAL output file
-* │       ├── joined\_fixed\_pairedReverseComplement\_merged\_sorted.txt           ... intermediate file
-* │       ├── joined\_fixed\_pairedReverseComplement\_merged.txt                   ... intermediate file
-* │       ├── joined\_fixed\_pairedReverseComplement.txt                           ... intermediate file
-* │       ├── joined\_fixed.txt                                                    ... intermediate file
-* │       ├── joined\_fixed\_without\_pairedReverseComplement\_sorted_FINAL.txt    ... FINAL output file
-* │       ├── joined\_fixed\_without\_pairedReverseComplement\_sorted.txt          ... intermediate file
-* │       ├── joined\_fixed\_without\_pairedReverseComplement.txt                  ... intermediate file
-* │       └── joined.txt                                                           ... intermediate file
-* └── TRF\_res                                                                     ... directory containing all TRF outputs (either it is filled automatically (case of `runAllWithTRF.sh`), or you must copy your input here (case of `runAllNoTRF.sh`)
-*     ├── dataset\_6484.dat                                                        ... NGS data from TRF
-*     ├── dataset\_6485.dat                                                        ... NGS data from TRF
-*     └── dataset\_6486.dat                                                        ... NGS data from TRF
+* __res__                                                                              ... predifined output directory name (can be changed in the variable `myDir` in the scripts `runAllWithRTF.sh` and `runAllNoTRF.sh`)
+  * __parsed__
+    * __dataset\_6484\_ppr.txt__                                                   ... intermediate file
+    * __dataset\_6485\_ppr.txt__                                                   ... intermediate file
+    * __dataset\_6486\_ppr.txt__                                                   ... intermediate file
+    * __res__
+      * __dataset\_6484\_ppr\_sorted.txt__                                       ... intermediate file
+      * __dataset\_6485\_ppr\_sorted.txt__                                       ... intermediate file
+      * __dataset\_6486\_ppr\_sorted.txt__                                       ... intermediate file
+      * __joined\_fixed\_pairedReverseComplement\_merged\_sorted\_FINAL.txt__    ... FINAL output file with reverse-complement-paired sequences of tandem repeats with number of occurrences in the input datasets 
+      * __joined\_fixed\_pairedReverseComplement\_merged\_sorted.txt__           ... intermediate file
+      * __joined\_fixed\_pairedReverseComplement\_merged.txt__                   ... intermediate file
+      * __joined\_fixed\_pairedReverseComplement.txt__                           ... intermediate file
+      * __joined\_fixed.txt__                                                    ... intermediate file
+      * __joined\_fixed\_without\_pairedReverseComplement\_sorted_FINAL.txt__    ... FINAL output file sorted according to the number of occurrences of tandem repeats in the input datasets
+      * __joined\_fixed\_without\_pairedReverseComplement\_sorted.txt__          ... intermediate file
+      * __joined\_fixed\_without\_pairedReverseComplement.txt__                  ... intermediate file
+      * __joined.txt__                                                           ... intermediate file
+  * __TRF\_res__                                                                     ... directory containing all TRF outputs (either it is filled automatically (case of `runAllWithTRF.sh`), or you must copy your input here (case of `runAllNoTRF.sh`)
+    * __dataset\_6484.dat__                                                        ... NGS data from TRF
+    * __dataset\_6485.dat__                                                        ... NGS data from TRF
+    * __dataset\_6486.dat__                                                        ... NGS data from TRF
 
 
 
