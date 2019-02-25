@@ -1,0 +1,125 @@
+<tool id="tandem_repeats_merger" name="Tandem Repeats Merger" version="0.1.0" force_history_refresh="True">
+    <requirements>
+        <requirement type="package" version="4.09">trf</requirement>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+	cp /home/galaxy_new/tools/tandem_repeats_merger/scripts/* ./ &&
+	#if $using_trf.use_trf == "yes"
+	  mkdir -p ./data &&
+	  #for $inp in $using_trf.fainputs
+	    ln -s $inp ./data/ &&
+	  #end for
+	  bash runAllWithTRF.sh $minNumberOfRepeats $minLengthOfPattern $using_trf.trf_match $using_trf.trf_mism $using_trf.trf_delta $using_trf.trf_pm $using_trf.trf_pi $using_trf.trf_min $using_trf.trf_max $using_trf.trf_longest $getVar('readLength', 90) $getVar('relOccur', 0) $using_trf.trf_html
+	#else
+	  mkdir -p ./data ./res/TRF_res &&
+	  #for $inp in $using_trf.trf_outs
+	    ln -s $inp ./data/ &&
+	    ln -s $inp ./res/TRF_res/`basename $inp .dat`.out &&
+	  #end for	  
+  	  bash runAllNoTRF.sh $minNumberOfRepeats $minLengthOfPattern $getVar('readLength', 90) $getVar('relOccur', 0)
+	#end if
+	&& cp ./res/parsed/res/joined_fixed_pairedReverseComplement_merged_sorted_FINAL.txt $out_rev && sed -i -e "s/^[ ]*//g" -e "s/[ ]*$//g" -e "s/ /\t/g" $out_rev
+	&& cp ./res/parsed/res/joined_fixed_without_pairedReverseComplement_sorted_FINAL.txt $out_no_rev && sed -i -e "s/^[ ]*//g" -e "s/[ ]*$//g" -e "s/ /\t/g" $out_no_rev
+	#if $using_trf.trf_html
+	  && cat *.summary.html > $trf_html_out
+	  && mkdir -p "$trf_html_out.files_path"
+	  && find . -iname "*html" -not -iname "*summary*" -exec mv -t "$trf_html_out.files_path" {} +
+	#end if
+    ]]></command>
+    <inputs>
+	<conditional name="using_trf">
+		<param type="select"  name="use_trf" label="Do you want to run Tandem Repeats Finder (TRF) as well?" >
+			<option value="yes" selected="true">Yes, I want to run my own TRF analysis</option>
+			<option value="no">No, I have already got TRF results</option>
+		</param>
+		<when value="yes">
+			<param type="data"    name="fainputs" format="fasta" multiple="true" label="DNA sequences in Fasta format" />
+		        <param type="integer" name="trf_match" format="" value="2" label="TRF's input: matching weight" help="The default value is 2.">
+	                        <validator type="in_range" min="1" />
+        	        </param>
+		        <param type="integer" name="trf_mism" format="" value="7" label="TRF's input: mismatching penalty" help="The default value is 7.">
+        	                <validator type="in_range" min="0" />
+	                </param>
+		        <param type="integer" name="trf_delta" format="" value="7" label="TRF's input: indel penalty" help="The default value is 7.">
+        	                <validator type="in_range" min="0" />
+	                </param>
+		        <param type="integer" name="trf_pm" format="" value="80" label="TRF's input: match probability (whole number)" help="The default value is 80.">
+        	                <validator type="in_range" min="1" />
+	                </param>
+		        <param type="integer" name="trf_pi" format="" value="10" label="TRF's input: indel probability (whole number)" help="The default value is 10.">
+        	                <validator type="in_range" min="1" />
+	                </param>
+		        <param type="integer" name="trf_min" format="" value="50" label="TRF's input: minimum alignment score to report">
+        	                <validator type="in_range" min="30" />
+	                </param>
+		        <param type="integer" name="trf_max" format="" value="15" label="TRF's input: maximum period size to report">
+        	                <validator type="in_range" min="1" />
+	                </param>
+		        <param type="integer" name="trf_longest" value="2" label="TRF's input: length of the longest expected TR array, in millions" help="The default value is 2, for 2 million bp. For Human data, a value of 6 is necessary. Tested up to a value of 25.">
+				<validator type="in_range" min="1" max="25" />
+	                </param>
+			<param type="boolean" name="trf_html" checked="true" truevalue="" falsevalue="-h" label="TRF's input: get also html summary output" help="Regardless of number of input files there will always be only one concatenated html output." />
+
+		</when>
+		<when value="no">
+			<param type="data" name="trf_outs" format="txt" multiple="true" label="Output files from TRF" help="Version of TRF must be at least 4.07b, because of the '-ngs' parameter which is needed" />
+		</when>
+	</conditional>
+        <param type="integer" name="minNumberOfRepeats" format="" value="3" label="minimum number of repeats to consider" />
+        <param type="integer" name="minLengthOfPattern" format="" value="4" label="minimum length of pattern to consider"/>
+        <!--param type="integer" name="readLength" format="" value="90" label="read length (this assumes your reads were cut to same length)"/-->
+        <!--param type="boolean" name="filterZeros" format="" value="false" label="do you want to filter output?"/>
+        <param type="boolean" name="relOccur" format="" value="false" label="do you want to count relative occurrences?"/-->
+    </inputs>
+    <outputs>
+        <!--data name="multi_variants" label="${tool.name} on ${on_string}: multi-sample variants" format="vcf_bgzip" from_work_dir="results/variants/variants.vcf.gz"/-->
+	<collection name="trf_output"  type="list" label="TRF on ${on_string}: ngs datasets" visible="true">
+          <discover_datasets pattern="__designation__" ext="txt" directory="res/TRF_res/" />
+          <filter>using_trf['use_trf'] == "yes"</filter>
+	</collection>
+
+        <!--collection name="trf_html_out" type="list" label="TRF on ${on_string}: html outputs" visible="true">
+          <discover_datasets pattern="(?P&lt;designation&gt;.+)\.summary\.html" format="html" directory="./" />
+        </collection-->
+
+	<data name="trf_html_out" format="html" label="TRF on ${on_string}: html summary" >
+          <!-- discover_datasets pattern="(?P&lt;designation&gt;.+)\.summary\.html" format="html" directory="./" /-->
+	  <filter>using_trf['trf_html'] == True</filter>
+	</data>
+
+	<!--data name="trf_output" format="txt" label="${tool.name} on ${on_string}: TRF output" from_work_dir="res/TRF_res/"-->
+          <!--discover_datasets pattern="__designation__" ext="txt" directory="res/TRF_res/" /-->
+          <!--filter>using_trf['use_trf'] == "yes"</filter>
+	</data-->
+
+	<!--data name="trf_output" format="txt" label="${tool.name} on ${on_string}: TRF output" >
+          <discover_datasets pattern="__designation__" ext="txt" directory="res/TRF_res/" />
+          <filter>using_trf['use_trf'] == "yes"</filter>
+	</data-->
+
+	<!-- this is the correct one, but not needed
+        <collection name="list_output" type="list" label="${tool.name} on ${on_string}: intermediate data">
+          <discover_datasets pattern="__designation_and_ext__" directory="res/parsed/res/" />
+        </collection>
+	-->
+
+	<data name="out_rev" format="tabular" label="${tool.name} on ${on_string}: sorted (reverse-complement-paired) table" />
+
+	<data name="out_no_rev" format="tabular" label="${tool.name} on ${on_string}: sorted (no complement) table" />
+
+    </outputs>
+    <help><![CDATA[
+        Finds candidate telomeric sequences in output NGS data of Tandem Repeats Finder, assuming you have BAL31-treated and untreated samples.
+    ]]></help>
+    <citations>
+        <citation type="bibtex">
+@misc{githubtandem-repeats-merger,
+  author = {LastTODO, FirstTODO},
+  year = {TODO},
+  title = {tandem-repeats-merger},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/zdenkas/tandem-repeats-merger},
+}</citation>
+    </citations>
+</tool>
