@@ -36,12 +36,12 @@ cd $myDir"/parsed/res"
 awk '{print $NF,$0}' joined_fixed_pairedReverseComplement_merged.txt  | sort -nr | cut -f2- -d' ' > joined_fixed_pairedReverseComplement_merged_sorted.txt
 #sed '1h;1d;$!H;$!d;G' joined_fixed_pairedReverseComplement_merged_sorted.txt > joined_fixed_pairedReverseComplement_merged_sorted_FINAL.txt
 grep "^Sequence" joined_fixed_pairedReverseComplement_merged_sorted.txt > joined_fixed_pairedReverseComplement_merged_sorted_FINAL.txt
-grep -v "^Sequence" joined_fixed_pairedReverseComplement_merged_sorted.txt >> joined_fixed_pairedReverseComplement_merged_sorted_FINAL.txt
+grep -v "^Sequence" joined_fixed_pairedReverseComplement_merged_sorted.txt >> joined_fixed_pairedReverseComplement_merged_sorted_FINAL.txt || echo "empty file with paired"
 
 awk '{print $NF,$0}' joined_fixed_without_pairedReverseComplement.txt  | sort -nr | cut -f2- -d' ' > joined_fixed_without_pairedReverseComplement_sorted.txt
 #sed '1h;1d;$!H;$!d;G' joined_fixed_without_pairedReverseComplement_sorted.txt > joined_fixed_without_pairedReverseComplement_sorted_FINAL.txt
 grep "^Sequence" joined_fixed_without_pairedReverseComplement_sorted.txt > joined_fixed_without_pairedReverseComplement_sorted_FINAL.txt
-grep -v "^Sequence" joined_fixed_without_pairedReverseComplement_sorted.txt >> joined_fixed_without_pairedReverseComplement_sorted_FINAL.txt
+grep -v "^Sequence" joined_fixed_without_pairedReverseComplement_sorted.txt >> joined_fixed_without_pairedReverseComplement_sorted_FINAL.txt || echo "empty file without paired"
 
 
 ### not needed in most cases

@@ -11,7 +11,7 @@ trf_pm="80"	# match probability (whole number)
 trf_pi="10"	# indel probability (whole number)
 trf_min="50"	# minimum alignment score to report
 trf_max="15"	# maximum period size to report
-trf_longest="2"	# longest length of TR array
+trf_longest="2"	# maximum TR length expected (in millions)
 readLength="90" # for restrZeros.py
 relOccur="0"	# if yes, the value must be 1 otherwise it is preset to 0
 trf_html=""	# if you want also the html output from TRF
@@ -25,7 +25,7 @@ trf_pm="$6"	# match probability (whole number)
 trf_pi="$7"	# indel probability (whole number)
 trf_min="$8"	# minimum alignment score to report
 trf_max="$9"	# maximum period size to report
-trf_longest="${10}"	# longest length of TR array
+trf_longest="${10}"	# maximum TR length expected (in millions)
 readLength="${11}"	# for restrZeros.py
 relOccur="${12}"	# if yes, the value must be 1 otherwise it is preset to 0
 trf_html="${13}"	# if you want also the html output from TRF
@@ -59,12 +59,12 @@ cd $myDir"/parsed/res"
 awk '{print $NF,$0}' joined_fixed_pairedReverseComplement_merged.txt  | sort -nr | cut -f2- -d' ' > joined_fixed_pairedReverseComplement_merged_sorted.txt
 #sed '1h;1d;$!H;$!d;G' joined_fixed_pairedReverseComplement_merged_sorted.txt > joined_fixed_pairedReverseComplement_merged_sorted_FINAL.txt
 grep "^Sequence" joined_fixed_pairedReverseComplement_merged_sorted.txt > joined_fixed_pairedReverseComplement_merged_sorted_FINAL.txt
-grep -v "^Sequence" joined_fixed_pairedReverseComplement_merged_sorted.txt >> joined_fixed_pairedReverseComplement_merged_sorted_FINAL.txt
+grep -v "^Sequence" joined_fixed_pairedReverseComplement_merged_sorted.txt >> joined_fixed_pairedReverseComplement_merged_sorted_FINAL.txt || echo "empty file with paired"
 
 awk '{print $NF,$0}' joined_fixed_without_pairedReverseComplement.txt  | sort -nr | cut -f2- -d' ' > joined_fixed_without_pairedReverseComplement_sorted.txt
 #sed '1h;1d;$!H;$!d;G' joined_fixed_without_pairedReverseComplement_sorted.txt > joined_fixed_without_pairedReverseComplement_sorted_FINAL.txt
 grep "^Sequence" joined_fixed_without_pairedReverseComplement_sorted.txt > joined_fixed_without_pairedReverseComplement_sorted_FINAL.txt
-grep -v "^Sequence" joined_fixed_without_pairedReverseComplement_sorted.txt >> joined_fixed_without_pairedReverseComplement_sorted_FINAL.txt
+grep -v "^Sequence" joined_fixed_without_pairedReverseComplement_sorted.txt >> joined_fixed_without_pairedReverseComplement_sorted_FINAL.txt || echo "empty file without paired"
 
 ### not needed in most cases
 # echo "restrZeros"
