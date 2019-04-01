@@ -99,16 +99,16 @@ for seq in sorted(seqDict1):
         resFile.write(seqDict1[seq] + '\n' + lineSplit[0])
         for i in range(1, len(lineSplit)):
             resFile.write(' 0')
-	resFile.write('\nsum')
+        resFile.write('\nsum')
         for i in range(1, len(lineSplit)):
             resFile.write(' ' + lineSplit[i])
         resFile.write('\n\n')
-	merged_resFile.write(seqDict1[seq] + ' ' + lineSplit[0])
+        merged_resFile.write(seqDict1[seq] + ' ' + lineSplit[0])
         for i in range(1, len(lineSplit)):
             merged_resFile.write(' 0')
         for i in range(1, len(lineSplit)):
             merged_resFile.write(' ' + lineSplit[i])
-	merged_resFile.write('\n')
+        merged_resFile.write('\n')
       else:    #has reverse complement
         reverseComplSeq = reverseSeqDict[seq]
         resFile.write(seqDict1[seq] + '\n' + seqDict2[reverseComplSeq] + '\n' + sumLines(seqDict1[seq], seqDict2[reverseComplSeq]) + '\n' +'\n')

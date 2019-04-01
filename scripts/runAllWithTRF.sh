@@ -11,7 +11,7 @@ trf_pm="80"	# match probability (whole number)
 trf_pi="10"	# indel probability (whole number)
 trf_min="50"	# minimum alignment score to report
 trf_max="15"	# maximum period size to report
-trf_longest="2"	# maximum TR length expected (in millions)
+trf_longest="2"	# longest length of TR array
 readLength="90" # for restrZeros.py
 relOccur="0"	# if yes, the value must be 1 otherwise it is preset to 0
 trf_html=""	# if you want also the html output from TRF
@@ -25,7 +25,7 @@ trf_pm="$6"	# match probability (whole number)
 trf_pi="$7"	# indel probability (whole number)
 trf_min="$8"	# minimum alignment score to report
 trf_max="$9"	# maximum period size to report
-trf_longest="${10}"	# maximum TR length expected (in millions)
+trf_longest="${10}"	# longest length of TR array
 readLength="${11}"	# for restrZeros.py
 relOccur="${12}"	# if yes, the value must be 1 otherwise it is preset to 0
 trf_html="${13}"	# if you want also the html output from TRF
@@ -35,22 +35,22 @@ myDir="res"
 mkdir $myDir
 
 echo "trf"
-bash iterateTRF.sh "$dataDir" $myDir"/TRF_res" $trf_match $trf_mism $trf_delta $trf_pm $trf_pi $trf_min $trf_max $trf_longest $trf_html
+bash `which iterateTRF.sh` "$dataDir" $myDir"/TRF_res" $trf_match $trf_mism $trf_delta $trf_pm $trf_pi $trf_min $trf_max $trf_longest $trf_html
 
 echo "iterateAllFiles"
-python iterateAllFiles.py -i $myDir"/TRF_res/" -r $myDir"/parsed" -n $minNumberOfRepeats -p $minLengthOfPattern
+python `which iterateAllFiles.py` -i $myDir"/TRF_res/" -r $myDir"/parsed" -n $minNumberOfRepeats -p $minLengthOfPattern
 
 echo "createTable"
-bash createTable.sh $myDir"/parsed"
+bash `which createTable.sh` $myDir"/parsed"
 
 echo "join"
-bash join.sh $myDir"/parsed/res" "$dataDir"
+bash `which join.sh` $myDir"/parsed/res" "$dataDir"
 
 echo "group cyclic permutations"
-python removePermutations.py -f $myDir"/parsed/res/joined.txt"
+python `which removePermutations.py` -f $myDir"/parsed/res/joined.txt"
 
 echo "group reverse complements"
-python modifyTableReverseComplement.py -f $myDir"/parsed/res/joined_fixed.txt"
+python `which modifyTableReverseComplement.py` -f $myDir"/parsed/res/joined_fixed.txt"
 
 echo "sort"
 cd $myDir"/parsed/res"

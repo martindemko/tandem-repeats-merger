@@ -27,4 +27,4 @@ os.mkdir(resFolder)
 #for file in glob.glob(inFolder + "/*.out"):
 for file in glob.glob(inFolder + "/*"):
     print (file, '\n')
-    os.system("python parseRes.py -f " + file + " -r " + resFolder + " -n " + minNumOfRepeats + " -p " + minLengthOfPeriod)
+    os.system("python `which parseRes.py` -f " + file + " -r " + resFolder + " -n " + minNumOfRepeats + " -p " + minLengthOfPeriod)
