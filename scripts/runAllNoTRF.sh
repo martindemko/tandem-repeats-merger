@@ -15,19 +15,19 @@ relOccur="${4}"	# if yes, the value must be 1 otherwise it is preset to 0
 myDir="res"
 
 echo "iterateAllFiles"
-python iterateAllFiles.py -i $myDir"/TRF_res/" -r $myDir"/parsed" -n $minNumberOfRepeats -p $minLengthOfPattern
+python `which iterateAllFiles.py` -i $myDir"/TRF_res/" -r $myDir"/parsed" -n $minNumberOfRepeats -p $minLengthOfPattern
 
 echo "createTable"
-bash createTable.sh $myDir"/parsed"
+bash `which createTable.sh` $myDir"/parsed"
 
 echo "join"
-bash join.sh $myDir"/parsed/res" "$dataDir"
+bash `which join.sh` $myDir"/parsed/res" "$dataDir"
 
 echo "group cyclic permutations"
-python removePermutations.py -f $myDir"/parsed/res/joined.txt"
+python `which removePermutations.py` -f $myDir"/parsed/res/joined.txt"
 
 echo "group reverse complements"
-python modifyTableReverseComplement.py -f $myDir"/parsed/res/joined_fixed.txt"
+python `which modifyTableReverseComplement.py` -f $myDir"/parsed/res/joined_fixed.txt"
 
 echo "sort"
 cd $myDir"/parsed/res"
@@ -51,7 +51,7 @@ grep -v "^Sequence" joined_fixed_without_pairedReverseComplement_sorted.txt >> j
 # # use as ${subst%,} to get rid of the final comma
 # sed -i -e "/numberOfReads[[:space:]]*=/ s/\[[^]]*\]/[${subst%,}]/" restrZeros.py
 # sed -i -e "s/readLength[[:space:]]*=[[:space:]]*[[:digit:]]*/readLength = ${readLength}/" restrZeros.py
-# python restrZeros.py -f $myDir"/parsed/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 1 -z 1 -r "$relOccur"
-# python restrZeros.py -f $myDir"/parsed/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 2 -z 2 -r "$relOccur"
-# python restrZeros.py -f $myDir"/parsed/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 3 -z 3 -r "$relOccur"
+# python `which restrZeros.py` -f $myDir"/parsed/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 1 -z 1 -r "$relOccur"
+# python `which restrZeros.py` -f $myDir"/parsed/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 2 -z 2 -r "$relOccur"
+# python `which restrZeros.py` -f $myDir"/parsed/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 3 -z 3 -r "$relOccur"
 

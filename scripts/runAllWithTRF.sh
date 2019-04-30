@@ -73,7 +73,7 @@ grep -v "^Sequence" joined_fixed_without_pairedReverseComplement_sorted.txt >> j
 # # use as ${subst%,} to get rid of the final comma
 # sed -i -e "/numberOfReads[[:space:]]*=/ s/\[[^]]*\]/[${subst%,}]/" restrZeros.py
 # sed -i -e "s/readLength[[:space:]]*=[[:space:]]*[[:digit:]]*/readLength = ${readLength}/" restrZeros.py
-# python restrZeros.py -f $myDir"/parsed/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 1 -z 1 -r "$relOccur"
-# python restrZeros.py -f $myDir"/parsed/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 2 -z 2 -r "$relOccur"
-# python restrZeros.py -f $myDir"/parsed/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 3 -z 3 -r "$relOccur"
+# python `which restrZeros.py` -f $myDir"/parsed/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 1 -z 1 -r "$relOccur"
+# python `which restrZeros.py` -f $myDir"/parsed/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 2 -z 2 -r "$relOccur"
+# python `which restrZeros.py` -f $myDir"/parsed/res/joined_fixed_pairedReverseComplement.txt" -s 0 -b 3 -z 3 -r "$relOccur"
 
