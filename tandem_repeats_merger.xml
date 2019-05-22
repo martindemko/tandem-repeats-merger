@@ -1,6 +1,7 @@
-<tool id="tandem_repeats_merger" name="Tandem Repeats Merger" version="0.1.0" force_history_refresh="True">
+<tool id="tandem_repeats_merger" name="Tandem Repeats Merger" version="0.1.1" force_history_refresh="True">
     <requirements>
-        <requirement type="package" version="4.09">trf</requirement>
+	<!-- conda install -c deamon trm=0.1.1 -->
+        <requirement type="package" version="0.1.1">trm</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
     cp '$__tool_directory__'/scripts/* ./ &&
